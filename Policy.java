@@ -87,4 +87,13 @@ public class Policy {
       
       return price;
    }
+   
+   /**
+   toString method that provides a String representation of a policy
+   */
+   public String toString() {
+      return "Policy Number: " + policyNumber +
+             "\nProvider Name: " + providerName +
+             "\nPolicy Price: $" + calcPrice();
+   }
 } 
