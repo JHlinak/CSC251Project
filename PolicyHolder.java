@@ -143,4 +143,18 @@ public class PolicyHolder {
    public double calcBMI() {
       return ((holderWeight * 703) / (holderHeight * holderHeight));
    }
+   
+   /**
+   toString method that provides a String representation of a policy holder
+   @return String representation of a policy holder
+   */
+   public String toString() {
+      return "Policyholder's First Name: " + holderFirstName +
+             "\nPolicyholder's Last Name: " + holderLastName +
+             "\nPolicyholder's Age: " + holderAge +
+             "\nPolicyholder's Smoking Status: " + smokingStatus +
+             "\nPolicyholder's Height: " + holderHeight +
+             "\nPolicyholder's Weight: " + holderWeight +
+             "\nPolicyholder's BMI: " + calcBMI();
+   }
 }
