@@ -2,6 +2,9 @@
 Class that will model one insurance policy
 */
 public class Policy {
+   //declare static fields
+   public static int count = 0;
+   
    //declare private fields
    private int policyNumber;
    private String providerName;
