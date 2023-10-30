@@ -8,6 +8,7 @@ public class Policy {
    //declare private fields
    private int policyNumber;
    private String providerName;
+   private PolicyHolder holder;
    
    //initialize constants
    private final double BASE_FEE = 600.0;
@@ -21,16 +22,19 @@ public class Policy {
    public Policy() {
       policyNumber = 0;
       providerName = "Unknown";
+      holder = new PolicyHolder();
    }
    
    /**
    Constructor that initializes all fields
    @param number The policy number
    @param provider The policy provider name
+   @param holder The policy holder
    */
-   public Policy(int number, String provider) {
+   public Policy(int number, String provider, PolicyHolder holder) {
       policyNumber = number;
       providerName = provider;
+      this.holder = new PolicyHolder(holder);
    }
    
    /**
@@ -64,6 +68,14 @@ public class Policy {
    public void setProviderName(String provider) {
       providerName = provider;
    }
+   
+   /**
+   Policy holder setter method
+   @param holder The policy holder
+   */
+   public void setPolicyHolder(PolicyHolder holder) {
+      this.holder = new PolicyHolder(holder);
+   }
 
    /**
    Method that calculates the price of the insurance policy
@@ -74,18 +86,18 @@ public class Policy {
       double price = BASE_FEE;
       
       //apply the elder fee if the policy holder is above the age of 50
-      if (holderAge > 50) {
+      if (holder.getHolderAge() > 50) {
          price = price + ELDER_FEE;
       }
       
       //apply the smoker fee if the policy holder is a smoker
-      if (smokingStatus.equals("smoker")) {
+      if (holder.getSmokingStatus().equals("smoker")) {
          price = price + SMOKER_FEE;
       }
       
       //appply a fee depending on the BMI of the policy holder
-      if (calcBMI() > 35) {
-         price = price + ((calcBMI() - 35) * BMI_FEE_RATE);
+      if (holder.calcBMI() > 35) {
+         price = price + ((holder.calcBMI() - 35) * BMI_FEE_RATE);
       }
       
       return price;
@@ -97,6 +109,7 @@ public class Policy {
    public String toString() {
       return "Policy Number: " + policyNumber +
              "\nProvider Name: " + providerName +
-             "\nPolicy Price: $" + calcPrice();
+             "\n" + holder.toString() +
+             String.format("\nPolicy Price: $%.2f", calcPrice());
    }
 } 
