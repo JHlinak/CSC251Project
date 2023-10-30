@@ -153,8 +153,21 @@ public class PolicyHolder {
              "\nPolicyholder's Last Name: " + holderLastName +
              "\nPolicyholder's Age: " + holderAge +
              "\nPolicyholder's Smoking Status: " + smokingStatus +
-             "\nPolicyholder's Height: " + holderHeight +
-             "\nPolicyholder's Weight: " + holderWeight +
-             "\nPolicyholder's BMI: " + calcBMI();
+             String.format("\nPolicyholder's Height: %.1f inches", holderHeight) +
+             String.format("\nPolicyholder's Weight: %.1f pounds", holderWeight) +
+             String.format("\nPolicyholder's BMI: %.2f", calcBMI());
+   }
+   
+   /**
+   Copy constructor to make a duplicate PolicyHolder class
+   @param obj The PolicyHolder object to be copied
+   */
+   public PolicyHolder(PolicyHolder obj) {
+      holderFirstName = obj.holderFirstName;
+      holderLastName = obj.holderLastName;
+      holderAge = obj.holderAge;
+      smokingStatus = obj.smokingStatus;
+      holderHeight = obj.holderHeight;
+      holderWeight = obj.holderWeight;
    }
 }
